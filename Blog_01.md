@@ -22,8 +22,10 @@ Disadvantages of XR applications:
 - Comfort (for example a headsets are still pretty heavy and you can feel it after some time)
 - Not yet adoptable for a mass production
 
-## Answer 3
-## Answer 4
+In the first Iron Man movie, when Tony Stark was creating his suit, he worked with hologram of the suit, he could add some parts, view them more detailed or remove them. Nowadays, engineers use extended reality to visualize buildings, structures or machines they are going to build. During recruitment phase, new employee can use Virtual reality that accurately mimic on-the-job scenarios, which can significantly improve performance, without employees being physicaly on workspace, or using the device they should work with. Doctors can train surgeries, professionals can assists with repairs remotely, thanks to the digital twins, students can learn faster and people can interact with each other in digital 3D space. Last but not least, virtual reality brings whole new experience to gaming, comparing to traditional gaming with 2D monitor, mouse or controllers. 
+Above mentioned scenarios are just a few use cases of XR, as it is large, quickly growing segment, with many investments and new ideas coming to the industry. 
+
+With XR, people can train extreme and dangerous scenarios without risking injury, trainees can operate and interact with expensive machinery without the risk of causing any damage or wear and tear, ensuring both the safety of the equipment and the operator. Also education and healthcare can be more personalized, which could lead to better results.
 ## Answer 5
 ## Answer 6
 ## Answer 7
