@@ -1,11 +1,11 @@
 # Blog One
 ## Answer 1
 <!--What is AR/VR/AV/MR/XR and how do the terminologies compare?-->
-**AR** is an addition of virtual objects into the real world, the objects appear as if they were actually existing.
-**VR** is a virtual digital space where one can immerse completely into so that he/she feels like being present in that space.
-**AV** is an addition of objects from the real world into a digitally created virtual space. (Kind of like a switched AR)
-**MR** is a mix of adding virtual and real objects together to create new environments where those objects coexist in real time.
-**XR** is like and umbrella concept for all those above, meaning all augmented and virtual reality is a subclass of XR.
+- **AR** is an addition of virtual objects into the real world, the objects appear as if they were actually existing.
+- **VR** is a virtual digital space where one can immerse completely into so that he/she feels like being present in that space.
+-  **AV** is an addition of objects from the real world into a digitally created virtual space. (Kind of like a switched AR)
+- **MR** is a mix of adding virtual and real objects together to create new environments where those objects coexist in real time.
+- **XR** is like and umbrella concept for all those above, meaning all augmented and virtual reality is a subclass of XR.
 
 ## Answer 2
 <!--How do XR applications compare to traditional desktop and mobile applications? Advantages/disadvantages?-->
