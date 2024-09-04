@@ -27,13 +27,12 @@ With XR, people can train extreme and dangerous scenarios without risking injury
 ## Answer 5
 ## Answer 6
 ## Answer 7
-<!--How is input technology and interactions different in XR?--!>
+- How is input technology and interactions different in XR?
 Standard input technology includes using controllers, keyboards, buttons, mice, and joysticks to interact with programs. 
 
 In contrast, XR allows for several different types of input when compared to standard ways. Augmented reality can use hand gestures, voice, touch screen input, gyroscopic movement, eye tracking, and more. Virtual reality most commonly uses tracking of handheld motion controllers, body tracking through cameras, and other periphials that can track movement within the virtual space. 
 
 These different input technologies provide for interactions beyond traditional user experiences. Augmented reality can overlay digital objects on the real world, meaning the interactions blend both the real and virtual spaces. This provides a new way to interact with the world around us. Virtual reality allows a fully immersive environment where physical interactions can take place inside a world seperate from reality.
 
-## Answer 8
-<!--What problems can XR solve?--!>
+- What problems can XR solve?
 XR technology allows for solutions to many problems – from accessibility, risk-aversion, safety, collaboration, costs of training, therapy, and a lot more. 
