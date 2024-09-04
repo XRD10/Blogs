@@ -27,4 +27,7 @@ With XR, people can train extreme and dangerous scenarios without risking injury
 ## Answer 5
 ## Answer 6
 ## Answer 7
+<!--How is input technology and interactions different in XR?--!>
+XR allows for many different types of input when compared to standard ways users interact with technology. Augmented reality can use hand gestures, voice, touch screen input, gyroscopic movement, eye tracking, and more. Virtual reality most commonly uses tracking of handheld controllers for movement in the virtual space. 
 ## Answer 8
+<!--What problems can XR solve?--!>
