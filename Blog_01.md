@@ -35,4 +35,5 @@ In contrast, XR allows for several different types of input when compared to sta
 These different input technologies provide for interactions beyond traditional user experiences. Augmented reality can overlay digital objects on the real world, meaning the interactions blend both the real and virtual spaces. This provides a new way to interact with the world around us. Virtual reality allows a fully immersive environment where physical interactions can take place inside a world seperate from reality.
 
 - What problems can XR solve?
+
 XR technology allows for solutions to many problems – from accessibility, risk-aversion, safety, collaboration, costs of training, therapy, and a lot more. 
