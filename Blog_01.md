@@ -36,3 +36,4 @@ These different input technologies provide for interactions beyond traditional u
 
 ## Answer 8
 <!--What problems can XR solve?--!>
+XR technology allows for solutions to many problems – from accessibility, risk-aversion, safety, collaboration, costs of training, therapy, and a lot more. 
