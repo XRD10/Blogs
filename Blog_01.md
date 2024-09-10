@@ -24,8 +24,15 @@ In the first Iron Man movie, when Tony Stark was creating his suit, he worked wi
 Above mentioned scenarios are just a few use cases of XR, as it is large, quickly growing segment, with many investments and new ideas coming to the industry. 
 
 With XR, people can train extreme and dangerous scenarios without risking injury, trainees can operate and interact with expensive machinery without the risk of causing any damage or wear and tear, ensuring both the safety of the equipment and the operator. Also education and healthcare can be more personalized, which could lead to better results.
-## Answer 5
-## Answer 6
+
+- How does current XR technology compare to an idealistic future vision of the technology?
+
+The current XR technologies are on a very good track toward fulfilling the idealistic future vision. The newest AR glasses have almost the same functionalities as those that could be seen in old Sci-fi movies. However, the XR technologies have a long journey ahead, if they want to fulfill our future visions. There are currently issues with affordability, limited content for XR, and also some people get motion sickness from it. Overall there is an issue with integrating XR into our daily lives.
+
+- How does immersion and presence factor into XR?
+
+Both immersion and presence are important parts of XR. Immersion involves technical and design elements of XR. Whereas presence is about the feeling of being inside the virtual reality. Immersion and presence are interconnected in XR technologies and both are essential.
+
 ## Answer 7
 - How is input technology and interactions different in XR?
 Standard input technology includes using controllers, keyboards, buttons, mice, and joysticks to interact with programs. 
