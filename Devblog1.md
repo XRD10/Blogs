@@ -13,15 +13,17 @@ to help plan the timetable for our work load. The tasks are as follows:
 
 MVP
 -
+
 Core
 -
+
 Extension
 -
 
 Following the dividison of tasks, the project repository was created in GitHub, and the initial commit from Unity was planned. This lead to an important discussion about how we would manage the workflow between GitHub and Unity. We decided
 this would need further planning and testing to be sure it works as intended.
 
-Finally, we decided on our timeframe.
+Finally, we decided on our timeframe for which we planned to keep ourselves 
 
 What we did:
 - Created requirements
