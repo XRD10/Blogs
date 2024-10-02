@@ -50,3 +50,5 @@ What we did:
     - **Branch** or **Fork** the main to develop features / per task
     - Create our own scenes? We will need to visualise this.
     - Get approved pull request --> Pull origin main --> Merge Local Dev scene into Local Main scene --> Merge Local Dev into Main branch
+ 
+- Started to work on requirements 1 - 7
