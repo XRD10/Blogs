@@ -84,4 +84,6 @@ There is a lot of `HideUI` methods in the figure above, but how and when do we s
 The rest of the placing action takes place once the sizes are set. We make sure to scale the sizes correctly according to the real world (we found that 1 unity unit is approx. 1 meter).
 
 This is how the UI looks like: 
+
+
 ![SetCustomSizesUI](images/image.png)
