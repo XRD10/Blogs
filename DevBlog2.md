@@ -89,7 +89,7 @@ This is how the UI looks like:
 ![SetCustomSizesUI](images/image.png)
 
 ### Save project
-In order to save the project we added SaveManager.cs with `TakeScreenshotAndSave` method. We decided to save the project to the photo gallery of user, instead of saving it to our application. This will save us some time, because we wouldn't have to create another screen and display saved projects. Furthemore, we implemented saving only for Android, as iOS needed additional setup. 
+In order to save the project we added `SaveManager.cs` with `TakeScreenshotAndSave` method. We decided to save the project to the photo gallery of user, instead of saving it to our application. This will save us some time, because we wouldn't have to create another screen and display saved projects. Furthemore, we implemented saving only for Android, as iOS needed additional setup. 
 
 This method provides path to DCIM directory, where photos are usually saved. We also create PhotoWallPlanner album, so it's easier for user to find the project.
 ``` 
