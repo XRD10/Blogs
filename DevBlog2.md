@@ -39,7 +39,7 @@ public class FramePlacer : PressInputBase
 ```
 
 
-### Custom object scale
+### Custom object size
 
 What is a bit more interesting is the definition of custom scale of the placed object (frame in our case). We want the user to be able to type in 2 values; width and height.
 
