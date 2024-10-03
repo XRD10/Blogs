@@ -46,9 +46,8 @@ What we did:
 - Discussed architecture
 
 - Discussed workflow (ways of working)
-    - **Main** for each screen in Unity – This will always be 'release' or workable implementation
+    - **Main** scene in Unity – This will always be 'release' or workable implementation
     - **Branch** or **Fork** the main to develop features / per task
-    - Create our own scenes? We will need to visualise this.
     - Get approved pull request --> Pull origin main --> Merge Local Dev scene into Local Main scene --> Merge Local Dev into Main branch
  
 - Started to work on requirements 1 - 7
