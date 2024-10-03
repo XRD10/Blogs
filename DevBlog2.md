@@ -3,7 +3,7 @@
 
 ## Progress
 
-As we started to work on the requirements for our MVP, there was one step to do before we could divide the work, create the initial project. We decided that we should utilize as much as we could from what has already been implemented in the AR FOundation template in Unity, and therefore we created a template AR project and started to build on top of that.
+As we started to work on the requirements for our MVP, there was one step to do before we could divide the work, create the initial project. We decided that we should utilize as much as we could from what has already been implemented in the AR Foundation template in Unity, and therefore we created a template AR project and started to build on top of that.
 
 Shortly after, we found out that this was not the best decision. Placing objects and then moving, scaling or rotating them worked out of the box, but we did not want some of the functionality (like rotation) and some we wanted to modify (scaling - so that the object only scales on 2 axes). After few wasted hours we agreed that we should start from scratch because it will be much easier to modify the logic of our app as we want to without spending too much time on understanding how the underlined code works.
 
@@ -87,3 +87,36 @@ This is how the UI looks like:
 
 
 ![SetCustomSizesUI](images/image.png)
+
+### Save project
+In order to save the project we added SaveManager.cs with "TakeScreenshotAndSave" method. We decided to save the project to the photo gallery of user, instead of saving it to our application. This will save us some time, because we wouldn't have to create another screen and display saved projects. Furthemore, we implemented saving only for Android, as iOS needed additional setup. 
+
+This method provides path to DCIM directory, where photos are usually saved. We also create PhotoWallPlanner album, so it's easier for user to find the project.
+``` 
+private string GetAndroidExternalStoragePath()
+{
+    if (Application.platform != RuntimePlatform.Android)
+        return Application.persistentDataPath;
+
+    var jc = new AndroidJavaClass("android.os.Environment");
+    var path = jc.CallStatic<AndroidJavaObject>("getExternalStoragePublicDirectory",
+         jc.GetStatic<string>("DIRECTORY_DCIM"))
+         .Call<string>("getAbsolutePath");
+
+    path = Path.Combine(path, "PhotoWallPlanner");
+    if (!Directory.Exists(path))
+    {
+        Directory.CreateDirectory(path);
+    }
+    return path;
+}
+``` 
+When testing the application on device, we were able to find the saved project in device files, however not in a gallery. After some research we found out we need to "notify" the gallery, so that image can be added. The following code is using Android Media Scanner to notify the gallery about the newly saved image.
+```
+AndroidJavaClass mediaScanner = new AndroidJavaClass("android.media.MediaScannerConnection");
+AndroidJavaClass playerActivity = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+AndroidJavaObject activity = playerActivity.GetStatic<AndroidJavaObject>("currentActivity");
+mediaScanner.CallStatic("scanFile", activity, new string[] { filePath }, null, null);
+``` 
+
+
