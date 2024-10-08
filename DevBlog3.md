@@ -16,4 +16,4 @@ The first situation was straight forward, we just check whether the `RaycastHit`
 if (Physics.Raycast(ray, out RaycastHit hitObject))
   if (hitObject.transform.CompareTag(Tag.Placable.ToString())) return;
 ```
-
+The second situation proved to be way more complex, we first tried to implement it using a method called `OverlapBox` (since our frames are rectangles) but after some time of not being successful we refactored the second situation into a new separate task as this is not a 'must to have' implementation for the MVP.
