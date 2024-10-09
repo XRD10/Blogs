@@ -118,5 +118,34 @@ AndroidJavaClass playerActivity = new AndroidJavaClass("com.unity3d.player.Unity
 AndroidJavaObject activity = playerActivity.GetStatic<AndroidJavaObject>("currentActivity");
 mediaScanner.CallStatic("scanFile", activity, new string[] { filePath }, null, null);
 ``` 
+### Moving the object
+Next part of the MVP was to develop feature for moving the placed object on the plane. For that was created `MoveObject.cs` script that was attached to `FrameManager` game object. `MoveObject.cs` is implementing `OnPress` method from `PressInputBase.cs` class. `OnPress` method is checking if the Game Object with tag placeble was tapped.
 
+Bellow is shown `Update` method that is responsible for updating the position of tapped game object as long as the user is pressing the screen. The method is checking if the ID of the object that the user is dragging on, is the same as ID of the plane where the object was initially placed. Thanks to that the game object can be moved only within the are of the plane. When the user moves the object, then the position of that object is updated based on the position of Raycast.
+```
+private void Update()
+    {
+        if (isDragging)
+        {
+            Vector2 screenPosition = Pointer.current.position.ReadValue();
+
+            if (raycastManager.Raycast(screenPosition, _hits, TrackableType.PlaneWithinPolygon))
+            {
+                var hitPose = _hits[0].pose;
+                var hitTrackableId = _hits[0].trackableId;
+
+                if (hitTrackableId == initialPlaneId)
+                {
+                    objectToMove.position = hitPose.position;  
+                }
+            }
+
+            if (Pointer.current.press.isPressed == false)
+            {
+                isDragging = false;
+                objectToMove = null;
+            }
+        }
+    }
+```
 
