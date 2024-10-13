@@ -28,3 +28,44 @@ It should be possible for the user to select a custom sized frame. To achieve th
  <img width="887" alt="image" src="https://github.com/user-attachments/assets/a9771337-1f8b-42bc-84fc-b193b72fa265">
 
 An interesting learning from implementing this task was that we expected that we will be setting X and Y axis with the custom values, however we learned that we actually needed to set X and Z. This, we believe, is because unity adjusts the coordinate system for vertical planes so that they keep consistency with the horizontal planes, therefore to make the Y axis to be the one represinting up/down from the plane it now faces towards the camera and X and Z are the ones describing the plane.
+
+### Uploading a compressed version of a photo and attaching it to premodeled frame 
+Another feature that was added to current project is picking a picture that should be placed on the wall from phone gallery. For that purpose was used asset [Native Gallery for Android & iOS](https://assetstore.unity.com/packages/tools/integration/native-gallery-for-android-ios-112630) that provides access to the phone gallery. 
+
+Bellow is shown `openGallery()` method that is responsible for oppening the gallery of the device and loading the image and assigning to Texture2D variable. After that is from Texture2D created sprite, so it can be assign to spriteRenderer of the GameObject. SpriteRenderer is used because the GameObject to which should be the picture attach is 3D GameObject and other approaches such as using RowImage are not possible for 3D object. This feature is still under development and it might be possible that the team will find out that assigning the picture to Sprite might cause some issues with quality of the picture and eventually the team will sued other approach.
+
+```
+ public void OpenGallery()
+    public void OpenGallery()
+    {
+        if (imageObject == null || spriteRenderer == null)
+        {
+            Debug.LogError("Image object or SpriteRenderer component is not assigned.");
+            return;
+        }
+        choosePictureButton.gameObject.SetActive(false);
+        NativeGallery.Permission permission = NativeGallery.GetImageFromGallery((path) =>
+        {
+            if (path != null)
+            {
+                Texture2D texture = NativeGallery.LoadImageAtPath(path, 512);
+                if (texture == null)
+                {
+                    Debug.LogError("Couldn't load texture from " + path);
+                    return;
+                }
+
+                Sprite newSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+
+                spriteRenderer.sprite = newSprite;
+
+            }
+        }, "Select an image", "image/*");
+
+        Debug.Log("Permission result: " + permission);
+    }
+```
+Bellow is shown the picture that was uploaded from the gallery and was placed to the wall. There is currently issue that the picture is not addapting to the size of the current frame. That is something that will be fixed as the team will progress on developing this feature.
+<img width="1046" alt="Screenshot 2024-10-13 at 20 42 39" src="https://github.com/user-attachments/assets/16181d16-029b-4b08-9779-657043cff657">
+
+
