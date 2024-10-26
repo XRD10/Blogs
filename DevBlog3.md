@@ -43,3 +43,17 @@ Bellow is shown the picture that was uploaded from the gallery and was placed to
 <img width="1046" alt="Screenshot 2024-10-13 at 20 42 39" src="https://github.com/user-attachments/assets/16181d16-029b-4b08-9779-657043cff657">
 
 
+### Working area and distances of frame
+Requirement no. 15: I want to locate the mounting points relative to the working zone (e.g. x,y coordinates (10cm from top and 20 cm from right)). 
+The first step was to create a working zone, which was relatively straightforward. Initially, there were a few issues with the plane size, as it defaults to 10x10 meters. After some research, we used a Quad instead, which better suited our needs. Another challenge arose with correctly rotating the Quad to align with the detected plane, but we were able to resolve this as well.
+```
+// reference: https://discussions.unity.com/t/arfoundation-vertical-plane-recognition-position-rotation-on-plane-normal/786665
+		Vector3 normal = -hitpose.up;
+		Quaternion planeRotation = Quaternion.LookRotation(normal, Vector3.up);
+
+		Vector3 adjustedPosition = hitpose.position + hitpose.up * 0.01f;
+    workingAreaPlane = Instantiate(workingAreaPlanePrefab, adjustedPosition, planeRotation);
+```
+Our next goal was to display the distances from the frame to the edges of the working zone. This proved to be quite challenging and required a considerable amount of time and effort.
+
+
