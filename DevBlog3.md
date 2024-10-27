@@ -5,6 +5,10 @@ We experienced bit of a difficulty while trying to finish our MVP on time, some 
 
 To make out for it, we refactored some of the tasks and only implemented the parts that were really necessary for our MVP so that the team could move forward and start with implementing the core features. We also did a few pair programming / debuging sessions to speed up the progress.
 
+About week into implementing the core features of our app, we realized we do not have enough time for implementing all the requirements we set out to complete, as some of them required more time than we anticipated. To be sure that we have a working concept at the end of the development cycle (29.10.2024) we had a meeting where we discussed what is necessary to have implemented for the app's usecase to be valid. Based on that discussion we again, refactored some of the tasks and decided to drop some that were less important.
+
+This continuous development and refactoring that we showcased helped us to end up with a relevant working product at the end that we can be happy about and is definitely something we will apply to our future projects as well.
+
 ## Development
 ### Creating more than 1 object
 The general idea here is that it should be possible to place multiple frames on a wall. We wanted to avoid 2 situations here:
