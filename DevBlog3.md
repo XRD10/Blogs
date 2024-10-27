@@ -61,6 +61,8 @@ The first step was to create a working zone, which was relatively straightforwar
 Our next goal was to display the distances from the frame to the edges of the working zone. This proved to be quite challenging and required a considerable amount of time and effort.
 
 ### AR Session recording and replay
+_This feature is only accessible in the `43-try-to-record-an-environment-and-test-it-in-the-simulator` branch as it is not complete and therefore it did not make sense for us to merge it to the main branch._
+
 At the end of the project, we wanted to experiment with the AR session recording/replay just to see if it would be any useful to us. Because of lack of time, we were only able to end up with being able to record the scene environment and camera features (position, rotation) but we are confident that it would be possible to record the plane and objects placed in a similar way as we recorded the camera's features:
 
 #### Recording
@@ -97,6 +99,28 @@ In the `Start()` method we subscribed to the `frameReceived` event of the `ARCam
 The recording would then be saved as one JSON file to the following location: `Path.Combine(Application.persistentDataPath, "ARSessionRecording.json")`
 
 #### Playback
+The most important thing in the playback was to create a new playback designated camera and disable the original AR camera, otherwise the main camera would override the playbakc data and we would not be able to see the playback. 
 
+Then it was just a matter of loading the JSON file, extract frame after frame, check for its timestamp and load the camera's data (If we reached and the recording file, the recording would simply stop, this behaviour could be changed to go back to the beginning by setting the `currentFrameIndex = 0` if we wanted to test longer):
+```
+    void Update()
+    {
+        if (isPlaying && currentFrameIndex < playbackRecording.frames.Count)
+        {
+            var frame = playbackRecording.frames[currentFrameIndex];
 
+            if (Time.time - startTime >= frame.timestamp)
+            {
+                arPlaybackCamera.transform.position = frame.position;
+                arPlaybackCamera.transform.rotation = frame.rotation;
+                currentFrameIndex++;
+            }
+
+            if (currentFrameIndex >= playbackRecording.frames.Count)
+            {
+                isPlaying = false;
+            }
+        }
+    }
+```
 
