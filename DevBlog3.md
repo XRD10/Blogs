@@ -63,7 +63,8 @@ Our next goal was to display the distances from the frame to the edges of the wo
 ### AR Session recording and replay
 At the end of the project, we wanted to experiment with the AR session recording/replay just to see if it would be any useful to us. Because of lack of time, we were only able to end up with being able to record the scene environment and camera features (position, rotation) but we are confident that it would be possible to record the plane and objects placed in a similar way as we recorded the camera's features:
 
-We created a custom script with a class called `ARFrameData` with the `System.Serializable` attribute so that it was possible to convert the data into a JSON format that we stored the information in:
+#### Recording
+We created a custom script with a class called `ARFrameData` with the `System.Serializable` attribute so that it was possible to convert the data into a JSON format that we stored the information in (we also created a class `ARSessionRecording` with `List<ARFrameData>` that stored all the frames):
 ```
 [System.Serializable]
 public class ARFrameData
@@ -73,7 +74,29 @@ public class ARFrameData
     public Quaternion rotation;
 }
 ```
+In the `Start()` method we subscribed to the `frameReceived` event of the `ARCameraManager` object, that would call the `OnFrameReceived` method to save the frames:
+```
+    void Start()
+    {
+        arCameraManager.frameReceived += OnFrameReceived;
+    }
 
+    void OnFrameReceived(ARCameraFrameEventArgs args)
+    {
+        var frameData = new ARFrameData
+        {
+            timestamp = Time.time,
+            position = arCameraManager.transform.position,
+            rotation = arCameraManager.transform.rotation
+        };
+
+        recordedFrames.Add(frameData);
+    }
+```
+
+The recording would then be saved as one JSON file to the following location: `Path.Combine(Application.persistentDataPath, "ARSessionRecording.json")`
+
+#### Playback
 
 
 
