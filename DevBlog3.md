@@ -60,4 +60,20 @@ The first step was to create a working zone, which was relatively straightforwar
 ```
 Our next goal was to display the distances from the frame to the edges of the working zone. This proved to be quite challenging and required a considerable amount of time and effort.
 
+### AR Session recording and replay
+At the end of the project, we wanted to experiment with the AR session recording/replay just to see if it would be any useful to us. Because of lack of time, we were only able to end up with being able to record the scene environment and camera features (position, rotation) but we are confident that it would be possible to record the plane and objects placed in a similar way as we recorded the camera's features:
+
+We created a custom script with a class called `ARFrameData` with the `System.Serializable` attribute so that it was possible to convert the data into a JSON format that we stored the information in:
+```
+[System.Serializable]
+public class ARFrameData
+{
+    public float timestamp;
+    public Vector3 position;
+    public Quaternion rotation;
+}
+```
+
+
+
 
