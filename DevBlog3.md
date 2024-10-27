@@ -58,7 +58,33 @@ The first step was to create a working zone, which was relatively straightforwar
 		Vector3 adjustedPosition = hitpose.position + hitpose.up * 0.01f;
     workingAreaPlane = Instantiate(workingAreaPlanePrefab, adjustedPosition, planeRotation);
 ```
-Our next goal was to display the distances from the frame to the edges of the working zone. This proved to be quite challenging and required a considerable amount of time and effort.
+Our next goal was to display the distances from the frame to the edges of the working zone. This proved to be quite challenging and required a considerable amount of time and effort. This is what we ended with.
+
+First, when placing a frame, we add it to the DistanceManager in `FramePlacer.cs` with the line `distanceManager.AddFrame(instance);`. This allows us to calculate the necessary positioning and display it to the user, indicating where to drill for the mounting point.
+
+In `TakeScreenshotAndSave()`, we toggle the distance display at both the beginning and end by adding `distanceManager.ToggleDistanceDisplay();`.
+
+The calculation process is as follows:
+```
+Bounds workingAreaBounds = workingAreaPlane.GetComponent<Renderer>().bounds;
+Vector3 mountingPosition = mountingPoint.position;
+
+Vector3 workingAreaCenter = workingAreaPlane.transform.position;
+float positionLeft = workingAreaCenter.y - workingAreaBounds.size.y / 2;
+float positionRight = workingAreaCenter.y + workingAreaBounds.size.y / 2;
+float positionTop = workingAreaCenter.z + workingAreaBounds.size.z / 2;
+float positionBottom = workingAreaCenter.z - workingAreaBounds.size.z / 2;
+
+
+float distanceLeft = Mathf.Abs(mountingPosition.y - positionLeft);
+float distanceRight = Mathf.Abs(mountingPosition.y - positionRight);
+float distanceTop = Mathf.Abs(mountingPosition.z - positionTop);
+float distanceBottom = Mathf.Abs(mountingPosition.z - positionBottom);
+```
+
+However, because of the rotation problem, we weren't able to make this work as intended, and so we did't merged the branch to main.
+<img width="327" alt="Screenshot 2024-10-27 at 8 41 38 pm" src="https://github.com/user-attachments/assets/d5c7ee6a-35c5-4768-96b1-b46bb3a69c03">
+
 
 ### AR Session recording and replay
 _This feature is only accessible in the `43-try-to-record-an-environment-and-test-it-in-the-simulator` branch as it is not complete and therefore it did not make sense for us to merge it to the main branch._
