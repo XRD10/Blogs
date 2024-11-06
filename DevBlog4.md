@@ -19,3 +19,22 @@ For the X-Wing cockpit, we combined two models: one had textures but lacked a th
 
 
 ### Flight Controller
+
+Since this has been developed during the separation of 3D models as described above, ew focused mainly on the functionality of the controller. We used the new input system and defined 2 Actions:
+
+- Pitch + Yaw
+- Thrust + Roll
+
+Each of them if basically stick on either gamepad or xr controller (so that we can test the game in VR mode as well): 
+
+<img width="368" alt="image" src="https://github.com/user-attachments/assets/4510c10a-702e-4db9-8b18-8fe4ef555817">
+
+For speed we check whether the input if above or below 0 and based on that we accelerate/slowdown (if 0 then the speed stays constant) and we make sure that we do not go over certain minima/maxima. In the update method we then assing each rotation value and speed to the transform component of the object that has the `FlightController` script as shown in the figure below: 
+
+<img width="646" alt="image" src="https://github.com/user-attachments/assets/cd17603d-de83-486c-8b4e-ee6858454b2b">
+
+The next goal is to connect the 3D separated thrust and rotation controllers to the functionality of the script.
+
+
+
+
