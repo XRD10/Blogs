@@ -32,4 +32,21 @@ And that is then listened for by the `VRFlightController`'s functions:
 
 As can be seen in the figure above, the `OnThrustChange` function is converting the input into real speed with the help of the `Lerp` function.
 
-THen there is an `Update` function in the `VRFlightController` that takes all the latest input and converts it into a valid speed/rotation of the spaceship.
+Then there is an `Update` function in the `VRFlightController` that takes all the latest input and converts it into a valid speed/rotation of the spaceship.
+
+### Customization of the `XRJoystick` script
+Using pre-created scripts from an imported unity package is a huge help in terms of development speed, however it often brings a few issues along, as there usually is some desired functionality that is not included and then you have to change it manually, this can be a tough process if the used script is complex and hard to understand. Luckily for us, we only needed few minor changes that we were able to implement after diving into the code for some time:
+
+#### Disabling rotation of the joystick alongside its y axis
+While testing, we noticed that at certain point, the joystick started to rotate in a weird way alongside the y axis. Since our joystick shape is not straight, it was a distractive element and we wanted to get rid of it. We found out, that there was a function that was setting the joystick's rotation called `SetHandleAngle` and all that needed to be done was to set the y angle update to 0: 
+
+![image](https://github.com/user-attachments/assets/64675979-d6f7-4211-ae83-2246eaa7bf48)
+
+#### Hiding an XR controller/hand on joystick grab
+To bring more realism into our game we used animated hands instead of controllers in the scene from the previously mentioned **Lets make a VR game** package. We noticed that when grabbing the controller, it would snap to a wrist position of the hand instead of a palm. While trying to find a solution to this issue we realized it would probably be best if we hid the hand while grabbing the joystick (a solution many VR games apply) so that it isclear that the player is controlling it.
+
+We added both hand as GameObject to the `XRJoystick` script and made a simple logic in the `StartGrab` and `EndGrab` functions, where we check the name of the Interactor grabbin the object and since our custom naming is following a clear structure of `Right_InteractorName` and `Left_InteractorName` for both hands we only check for the beggining of the string and based on that we disable/enable the corresponding hand object:
+
+<img width="413" alt="image" src="https://github.com/user-attachments/assets/7ab4c50a-241a-4dce-b61b-d62de9dd972d">
+
+
