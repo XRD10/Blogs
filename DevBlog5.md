@@ -30,4 +30,6 @@ And that is then listened for by the `VRFlightController`'s functions:
 
 <img width="475" alt="image" src="https://github.com/user-attachments/assets/620f6ba9-68a9-4260-8e54-85d7b62c3e74">
 
-As can be seen in the figure above, the `OnThrustChange` function is converting the input into real speed with the help of the `Lerp` function
+As can be seen in the figure above, the `OnThrustChange` function is converting the input into real speed with the help of the `Lerp` function.
+
+THen there is an `Update` function in the `VRFlightController` that takes all the latest input and converts it into a valid speed/rotation of the spaceship.
