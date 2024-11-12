@@ -9,3 +9,9 @@ All the team worked together in the XR lab which helped us to close some discuss
 
 
 ## Development
+Within the MVP milestone we completed the following:
+- Found a X-Wing 3D model that we divided into separate parts as needed (joystick and thrust controller) in Blender.
+- Created `FlightController` and `VRFlightController` (one of them serves for gamepad / XR controller input, the other converts joystick and thrust position into speed and rotation)
+- Added engine sound
+- Added shooting
+- Added a universe skybox
