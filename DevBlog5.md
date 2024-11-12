@@ -15,3 +15,17 @@ Within the MVP milestone we completed the following:
 - Added engine sound
 - Added shooting
 - Added a universe skybox
+
+### 3D object movement into flight controls
+Since this project is very time limited, we did not want to waste all of the time on creating many custom components, therefore we took a `XRSlider` and `XRJoystick` controllers from a unity package called **Lets make a VR game** from **[Valem Tutorials](https://www.youtube.com/@ValemTutorials)**. We changed the visuals for our 3D objects that we divided from a previous X Wing model in Blender and created a special `VRFlightController` which takes an input of the thrust/joystick 's position and converts it into a speed and rotation of the spaceship.
+
+The way this works is as follows, the `XRSlider` and `XRJoystick` scripts are emitting unity events with the object's position:
+
+<img width="363" alt="image" src="https://github.com/user-attachments/assets/07f124e2-03e3-4860-a15d-0e1edb5c5eab">
+
+_an example from the `XRJoystick` controller in the editor_
+
+
+And that is then listened for by the `VRFlightController`'s functions:
+
+<img width="475" alt="image" src="https://github.com/user-attachments/assets/620f6ba9-68a9-4260-8e54-85d7b62c3e74">
