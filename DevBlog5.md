@@ -49,4 +49,8 @@ We added both hand as GameObject to the `XRJoystick` script and made a simple lo
 
 <img width="413" alt="image" src="https://github.com/user-attachments/assets/7ab4c50a-241a-4dce-b61b-d62de9dd972d">
 
+### Imperial Star Destroyer and implementation of LOD
+![Screenshot 2024-11-15 at 9 55 38 pm](https://github.com/user-attachments/assets/ab40b680-ab11-4542-a9b8-30b7a2677434)
+
+
 
