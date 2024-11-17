@@ -50,7 +50,12 @@ We added both hand as GameObject to the `XRJoystick` script and made a simple lo
 <img width="413" alt="image" src="https://github.com/user-attachments/assets/7ab4c50a-241a-4dce-b61b-d62de9dd972d">
 
 ### Imperial Star Destroyer and implementation of LOD
+The implementation of LOD system allows our Star Destroyer model to maintain optimal performance across various viewing distances. We have removed some groups that are not important for larger distances in Blender. The resulting models were then imported into Unity, where we set up a StarDestroyer prefab with LOD group components with three distinct detail levels. The technical specifications of each LOD level are in the figure below.
 ![Screenshot 2024-11-15 at 9 55 38 pm](https://github.com/user-attachments/assets/ab40b680-ab11-4542-a9b8-30b7a2677434)
 
+This LOD implementation provides significant performance optimization:
+- 80% polygon reduction at medium distances (LOD1)
+- 97% polygon reduction at long distances (LOD2)
+- Automatic transition between detail levels based on viewing distance
 
 
