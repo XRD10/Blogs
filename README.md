@@ -1,4 +1,12 @@
 # Blogs:
+
+## Contributors
+**Simon Mayer** ([simonfrayer](https://github.com/simonfrayer))
+**Anton Durčák** ([xoxkoo](https://github.com/xoxkoo))
+**James Cullen** ([JcullenNZ](https://github.com/JcullenNZ))
+**Dávid Kocúr** ([Davidek776](https://github.com/Davidek776))
+
+
 ## Initial blog
 - [Blog1](Blog_01.md)
   
