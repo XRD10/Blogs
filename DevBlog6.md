@@ -1,4 +1,4 @@
-# X-Wing VR - Part 2
+# X-Wing VR - Part 3
 
 ## Process
 The final part of the VR project was really strong for our team as we were motivated from how the project has been developing we stayed very productive throughout the whole period and managed to finish most of the tasks, as can be seen in the figure below (there is one open task left and at the time of writing this post it is mostly implemented and not far from being reviewed, so it is on track):
