@@ -3,7 +3,7 @@
 - [Blog1](Blog_01.md)
   
 ## AR project
-_GitHub Repository: [Photo Wall Planner](https://github.com/XRD10/photo-wall-planner)_
+_GitHub Repository: [Photo Wall Planner](https://github.com/XRD10/photo-wall-planner)_ <br/>
 _YoutTube Demo: [Photo Wall Planner Demo](https://youtu.be/E9mOAo1mXzE)_
 
 - [Blog2](DevBlog1.md)
@@ -11,7 +11,7 @@ _YoutTube Demo: [Photo Wall Planner Demo](https://youtu.be/E9mOAo1mXzE)_
 - [Blog4](DevBlog3.md)
   
 ## VR project
-_GitHub Repository: [X-Wing VR](https://github.com/XRD10/x-wing-vr)_
+_GitHub Repository: [X-Wing VR](https://github.com/XRD10/x-wing-vr)_<br/>
 _YoutTube Demo: [X-Wing VR Demo]()_
 
 - [Blog5](DevBlog4.md)
