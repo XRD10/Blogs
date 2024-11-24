@@ -15,6 +15,7 @@ Within the MVP milestone we completed the following:
 - Added engine sound
 - Added shooting
 - Added a universe skybox
+- Added meteorites
 
 ### 3D object movement into flight controls
 Since this project is very time limited, we did not want to waste all of the time on creating many custom components, therefore we took a `XRSlider` and `XRJoystick` controllers from a unity package called **Lets make a VR game** from **[Valem Tutorials](https://www.youtube.com/@ValemTutorials)**. We changed the visuals for our 3D objects that we divided from a previous X Wing model in Blender and created a special `VRFlightController` which takes an input of the thrust/joystick 's position and converts it into a speed and rotation of the spaceship.
@@ -59,4 +60,13 @@ This LOD implementation provides significant performance optimization:
 - 97% polygon reduction at long distances (LOD2)
 - Automatic transition between detail levels based on viewing distance
 
+### Meteorites
+Meteorites were added to the game to enhance the game experience. For meteorites was used **[Asteroid Asset](https://assetstore.unity.com/packages/3d/environments/asteroids-pack-84988)**
+from Unity asset store. From a meteorite included in the asset was created prefab called Asteroid field, which includes a huge amount of meteorites. Asteroid fiels were added in multiple places in the game scene. To make the meteorite rotate around it's own axis was created `AsteroidMovement` script. On the figure bellow can be seen simple method that is using Angular Velocity to rotate the Meteorite in random directions.
+
+<img width="700" alt="Screenshot 2024-11-24 at 18 21 24" src="https://github.com/user-attachments/assets/4793821b-c305-484d-b25e-2285e46664a0">
+
+In the figure bellow can be seen asteroid field that was added to game scene. For the purpose of the MVP were meteorites with rotation functionality just added to the scene. However the team decided that in the upcoming week will be developed as well meteorite explosion in case that the X-Wing or enemy rocket would collide with it.
+
+<img width="700" alt="Screenshot 2024-11-24 at 18 22 13" src="https://github.com/user-attachments/assets/208d294d-47a6-4a81-a520-959d4fc85a14">
 
