@@ -20,16 +20,18 @@ In the figure bellow can be see how was the script updated. If the collision occ
 <img width="600" alt="Screenshot 2024-11-24 at 18 51 08" src="https://github.com/user-attachments/assets/627ad92e-b339-416b-b59e-1191d963b341">
 
 ### Start scene 
-Main menu were created to avoid starting the game loop directly when the users enter the game and instead position the user to virtual space, where he can start the game whenever he want. To create the Start scene and Main menu was used from a unity package called **Lets make a VR game** from **[Valem Tutorials](https://www.youtube.com/@ValemTutorials)**. The package included following scripts: `GameStartmenu`, `Fader Screen`, `Scene Transition Manager` and `UI Audio manager`. After importing the asset and doing some small modification was Main Menu working. To make the scene nicer was also added the 'Milky Way' Skybox. In the figure bellow can be seen Start scene with Main menu.
+Start scene and Main menu were created to avoid starting the game loop directly when the users enter the game and instead place the user to virtual space, where he can start the game whenever he want. To create the Start scene and Main menu was used a unity package called **Lets make a VR game** from **[Valem Tutorials](https://www.youtube.com/@ValemTutorials)**. The package included following scripts: `GameStartmenu`, `Fader Screen`, `Scene Transition Manager` and `UI Audio manager`. After importing the asset and doing some small modification was Main Menu working. 'Milky Way' Skybox was added to the scene to increase the immersive experience. In the figure bellow can be seen Start scene with Main menu.
 
 <img width="500" alt="Screenshot 2024-11-24 at 19 35 06" src="https://github.com/user-attachments/assets/27f3ea6e-778f-4a7c-b734-9e8083b87e65">
 
 ### Pause menu
-Pause menu was created to allow user to navigate to Start Scene from Main Scene during the game loop. For the Pause Menu was used UI Canvas with two buttons. To make the UI buttons react to Raycast it was necessary to add `TrackedDeviceGraphicRaycaster` component to Canvas. In the figure bellow can be seen two methods from `PauseMenu` script, that was created to control Pause Menu UI. `OnEnable` method is setting subscriber if the key that is responsible for toggling menu(Primary key on left controller) is pressed. If it's pressed then the pause menu visibility is toggled to opposite value and same farcasting. The reason for enabling and disabling farCasting based on the PauseMenu visibilty is that farcasting is by default not used in the game, but we want to have it enabled only when interacting with UI.
+Pause menu was created to allow user to navigate to Start Scene from Main Scene during the game loop. For the Pause Menu was used UI Canvas with two buttons. To make the UI buttons react to Raycast it was necessary to add `TrackedDeviceGraphicRaycaster` component to Canvas. 
+
+In the figure bellow can be seen two methods from `PauseMenu` script, that were created to control Pause Menu UI. `OnEnable()` method is setting subscriber if the key that is responsible for toggling menu (Primary key on left controller) is pressed. If it's pressed then in `ToggleMenu()` method is the pause menu visibility toggled to opposite value and same applies for farcasting. The reason for enabling and disabling farcasting based on the PauseMenu visibilty is that farcasting is by default not used in the game, but we want to have it enabled only when interacting with UI.
 
 <img width="500" alt="Screenshot 2024-11-24 at 19 45 51" src="https://github.com/user-attachments/assets/68cadae9-c501-48bf-b01a-751ff7dbe978">
 
-In the figure bellow can be seen `Continue()` and `NavigateToMainMenu()` methods that are executed when Raycast hits Continue or Menu buttons. `Continue()` method simply disabled the FarCasting and hides the UI. `NavigateToMainMenu()` navigates to Start Scene. 
+In the figure bellow can be seen `Continue()` and `NavigateToMainMenu()` methods that are executed when Raycast hits Continue or Menu buttons. `Continue()` method is simply disabling the FarCasting and hiding the UI. `NavigateToMainMenu()` is navigating to Start Scene. 
 
 <img width="318" alt="Screenshot 2024-11-24 at 19 52 00" src="https://github.com/user-attachments/assets/c154dfb3-6e3b-48fc-aa16-d9c9cc01d34b">
 
