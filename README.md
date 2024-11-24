@@ -3,14 +3,14 @@
 - [Blog1](Blog_01.md)
   
 ## AR project
-- DevBlog1.md
-- DevBlog2.md
-- DevBlog3.md
+- [Blog2](DevBlog1.md)
+- [Blog3](DevBlog2.md)
+- [Blog4](DevBlog3.md)
   
 ## VR project
-- DevBlog4.md
-- DevBlog5.md
-- DevBlog6.md
+- [Blog5](DevBlog4.md)
+- [Blog6](DevBlog5.md)
+- [Blog7](DevBlog6.md)
 
 ## Personal reflections
 
