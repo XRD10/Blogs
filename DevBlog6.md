@@ -41,5 +41,29 @@ In the figure bellow can be seen how the Pause Menu looks like. For buttons and 
 <img width="500" alt="Screenshot 2024-11-24 at 19 40 19" src="https://github.com/user-attachments/assets/e23fa355-08ea-4e77-b2eb-cc036fca07b9">
 
 ## Cockpit screens
+Every cockpit needs screens with info displaying. We added additional camera to `X-wing POV` prefab to have overview of what is hapening behind the x-wing. `CameraRenderTexture` was created and assigned to *Output Texture* of `RearViewCamera` object. Then this camera could be displayed on the screen, which is basically `Quad` with `CameraRenderTexture` as material. See the image bellow for final result. 
+
+For speed displaying, another controller was created called `SpeedDisplayController.cs`. It has reference to `VRFlightController`.
+```
+	void Update()
+	{
+		if (flightController != null && speedDisplay != null)
+		{
+			currentSpeed = flightController.GetCurrentSpeed();
+
+			// Calculate displayed speed (mapped to 110 max)
+			float displayedSpeed = (currentSpeed - minSpeed) * (maxDisplaySpeed - minSpeed) / (topSpeed - minSpeed) + minSpeed;
+			speedDisplay.text = $"{displayedSpeed:F1}";
+
+			if (speedBar != null)
+			{
+				float fillAmount = Mathf.InverseLerp(minSpeed, topSpeed, currentSpeed);
+				speedBar.fillAmount = fillAmount;
+			}
+		}
+	}
+```
+
 <img width="525" alt="Screenshot 2024-11-25 at 12 37 49 pm" src="https://github.com/user-attachments/assets/e2e978d1-a8b8-4d96-956f-e5f37b5818b4">
-There is still a lot of things that could be added to cockpit. We could add real blinking lights instead of textures, make more buttons or sticks interactable (for example Battle mode button) or health bar. We enjoyed working on this project and would have welcomed additional time to implement more features. However, due to time constraints, these additional features had to be left for future development.
+
+There is still a lot of things that could be added to cockpit. We could add real blinking lights instead of textures, make more buttons or sticks interactable (for example Battle mode button) or shield health bar. We enjoyed working on this project very much and would have welcomed additional time to implement more features. However, due to time constraints, these additional features had to be left for future development.
