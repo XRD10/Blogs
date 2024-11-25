@@ -39,3 +39,7 @@ In the figure bellow can be seen how the Pause Menu looks like. For buttons and 
  from Unity Assets store.
 
 <img width="500" alt="Screenshot 2024-11-24 at 19 40 19" src="https://github.com/user-attachments/assets/e23fa355-08ea-4e77-b2eb-cc036fca07b9">
+
+## Cockpit screens
+<img width="525" alt="Screenshot 2024-11-25 at 12 37 49 pm" src="https://github.com/user-attachments/assets/e2e978d1-a8b8-4d96-956f-e5f37b5818b4">
+There is still a lot of things that could be added to cockpit. We could add real blinking lights instead of textures, make more buttons or sticks interactable (for example Battle mode button) or health bar. We enjoyed working on this project and would have welcomed additional time to implement more features. However, due to time constraints, these additional features had to be left for future development.
