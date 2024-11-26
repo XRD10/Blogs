@@ -37,6 +37,47 @@ public class FramePlacer : PressInputBase
     }
 }
 ```
+### Predefined object size
+With a bit of research, we found the most common sizes of frames and implemented prefab objects of these sizes (cm):
+10x15, 13x18, 20x25, 30x30, 30x40, 50x60.
+We also knew that we would want the frames to be able to be implemented in both portrait and landscape.
+To implement this, prefab game objects were made with the sizes set in Unity world scale, where 1 unit reperesents 1m.
+This should have a real world representation of size in relation to the scanned wall.
+
+The way this was implemented required a list of prefab game objects to be placed on the FrameMenuUI script, and then buttons representing each prefab object would be created to represent each of these objects. 
+´´´´
+ void PopulateObjectList()
+ {
+     if (NumberOfFrames <= 0 || (buttonPrefab == null))
+     {
+         Debug.LogError("Objects error - Check object list" + NumberOfFrames);
+         return;
+     }
+
+     for (int i = 0; i < NumberOfFrames; i++)
+     {
+         GameObject newButton = Instantiate(buttonPrefab, buttonContainer);
+         TextMeshProUGUI buttonText = newButton.GetComponentInChildren<TextMeshProUGUI>();
+         buttonText.text = FrameSelection[(int)i].name;
+
+         int index = i; // Create a local copy of the index for the lambda function
+
+         newButton.GetComponent<Button>().onClick.AddListener(() =>
+         {
+             DestroyAllChildren();
+             FramesList.SetActive(false);
+             SetSpawnObject(index); //Here we SET
+             FramesButton.SetActive(true);
+             galleryMenu.gameObject.SetActive(true);
+
+         });
+     }
+ }
+´´´´
+By doing it this way, we created buttons that represented each prefab object in the list, and actively deleted them once a button had been created.
+
+In retrospect, this implementation could have been handled much better with a single frame prefab, and have the size scaled according to the same method as the custom frame which sets the XY sizes. This would have reduced the number of prefabs, and opened the application to more flexible future implementations. This could be a viable approach to selecting different frames however, rather than frame sizes.
+
 
 
 ### Custom object size
