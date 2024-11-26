@@ -1,6 +1,8 @@
 # Personal Reflections
 
 ## Simon
+### Main contributions
+- Project development structure (both AR and VR)
 ### General reflections
 At the beginning of the semester I thought AR will be an easier than VR in terms of development and I was wrong. I am not sure if it was the selection of the topic for the project itself that made it harder but we struggled with it a lot (at least that was my feeling). Based on that, I wish there was more time dedicated to developing the VR project, as the school has dedicated headsets on which the testing is much better. 
 
