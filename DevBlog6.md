@@ -43,7 +43,7 @@ In the figure bellow can be seen how the Pause Menu looks like. For buttons and 
 ## Cockpit screens
 Every cockpit needs screens with info displaying. We added additional camera to `X-wing POV` prefab to have overview of what is hapening behind the x-wing. `CameraRenderTexture` was created and assigned to *Output Texture* of `RearViewCamera` object. Then this camera could be displayed on the screen, which is basically `Quad` with `CameraRenderTexture` as material. See the image bellow for final result. 
 
-For speed displaying, another controller was created called `SpeedDisplayController.cs`. It has reference to `VRFlightController`.
+For speed displaying, another controller was created called `SpeedDisplayController.cs`. It has reference to `VRFlightController` to access *currentSpeed*, *minSpeed* and *topSpeed*. Function bellow controlls *displayedSpeed* as number and *speedBar*.
 ```
 	void Update()
 	{
