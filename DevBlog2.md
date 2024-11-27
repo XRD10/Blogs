@@ -37,6 +37,43 @@ public class FramePlacer : PressInputBase
     }
 }
 ```
+
+### Placing the object
+Placing the object in the correct orientation was remarkably difficult to get to work correctly.
+What worked on the simulator, did not translate to the real world application. This was due to an unexpected setup of the simulator, with xyz axes mixed-up. Additionally, the wall scanning did not always spawn predictably in AR. This meant the implementation that spawned the object took a long time to get remotely correct. 
+```
+    public void PlaceFrame()
+    {
+        var hitpose = _hits[0].pose;
+
+        // If the image from the gallery was not picked or if the frame sized was changed, then
+        if (galleryManager.gameObject.activeSelf)
+        {
+            galleryManager.setPictureFromGallery(null);
+        }
+
+        texture = galleryManager.getPictureFromGallery();
+
+        if (texture)
+        {
+            float yRotation = frameMenuUI.GetLandscape() ? 0f : 90f;
+
+            instance = Instantiate(objectToPlace, hitpose.position, Quaternion.identity);
+            instance.transform.localScale = new Vector3(objectToPlace.transform.localScale.x, objectToPlace.transform.localScale.y / 10, objectToPlace.transform.localScale.z);
+            instance.transform.up = hitpose.up;
+            instance.transform.Rotate(0, yRotation, 0, Space.Self);
+            instance.tag = "Placable";
+            SetText(instance, instance.transform.localScale.z, instance.transform.localScale.x);
+            applyPicture();
+        }
+        else
+        {
+            Debug.Log("Choose image from gallery");
+        }
+
+    }
+´´´
+
 ### Predefined object size
 With a bit of research, we found the most common sizes of frames and implemented prefab objects of these sizes (cm):
 10x15, 13x18, 20x25, 30x30, 30x40, 50x60.
@@ -76,8 +113,7 @@ The way this was implemented required a list of prefab game objects to be placed
 ´´´´
 By doing it this way, buttons are created that represent each prefab object in the list, and actively deleted them once a button had been created.
 
-In retrospect, this implementation could have been handled much better with a single frame prefab, and have the size scaled according to the same method as the custom frame which sets the XY sizes. This would have reduced the number of prefabs, and opened the application to more flexible future implementations. The approach would likely have been a good option when selecting different types of frames however, which could be implemented in the future.
-
+In retrospect, this implementation could have been handled much better with a single frame prefab, and have the size scaled according to the same method as the custom frame which sets the XY sizes. This would have reduced the number of prefabs, and opened the application to more flexible future implementations. The approach would likely have been a good option when selecting different types of frames however, which could be implemented in the future. 
 
 ### Custom object size
 
