@@ -79,7 +79,8 @@ Shooting is a regularly implemented feature of games, so it was straight-forward
 
 To start with, a laser prefab was created simply using a stretched 3D object with a collider. The projectile script added to the prefab contains simple information including speed, damage, time to live, and a way to keep the projectile heading in the correct direction. The Enemy laser prefab variant was coloured green, and the Player laser prefab variant was coloured red.
 A more interesting part was creating the firing controller, particularly in order to control the firing sequence of the X-Wing.
-{
+
+``
     [Header("----Laser Settings----")]
     public string laserTag = "PlayerLaser";
     public float fireRate;
@@ -103,17 +104,13 @@ A more interesting part was creating the firing controller, particularly in orde
     [Tooltip("Set where the lasers should aim")]
     [SerializeField]
     Transform targetPoint;
-}
-
+``
 The FiringController class for the player sets all the information for the shooting timing and spawnpoint for the projectiles, and passes speed, damage and target location to the newly spawned objects.
 One of the fun elements was utilising a co-routine to handle the firing, which allows setting a pause between shots and makes it easy to cycle through each of the firing locations making a circular firing pattern. This can be easily edited to make different firing patterns.
-   
+``
 {
      private IEnumerator FireContinuously()
-    {
-        // Calculate the interval between each laser shot
-        // Total time for one full cycle (all lasers fired once)
-        float cycleTime = laserOrigins.Length / fireRate;
+         float cycleTime = laserOrigins.Length / fireRate;
 
         // Time between individual laser shots
         float timeBetweenShots = cycleTime / laserOrigins.Length;
@@ -135,11 +132,7 @@ One of the fun elements was utilising a co-routine to handle the firing, which a
                 yield return null;
             }
         }
-    }
-}}
-
-
-{
+        
     private void FireSingleLaser(Transform origin)
     {
         
@@ -153,3 +146,8 @@ One of the fun elements was utilising a co-routine to handle the firing, which a
         projectile.targetPosition = targetPoint.position;
     }
 }
+``
+
+Once the input action to fire is triggered, the isFiring boolean is set to True and the Co-routine FireContinuously is called. While 'isFiring' is active, the loop calls the FireSingleLaser() method and cycles through the array of firepoints. Additionally, the while-loop introduces a slight delay before firing the next laser from the next firing location. This simple co-routine allows for controlling a more exciting and fun firing pattern that is very responsive and more immersive.
+
+
