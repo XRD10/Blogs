@@ -3,9 +3,9 @@
 ## Process
 We experienced bit of a difficulty while trying to finish our MVP on time, some of the tasks were a bit more complex than we originaly expected (especially placing an object in the correct orientation or not being able to move placed objects into each other).
 
-To make out for it, we refactored some of the tasks and only implemented the parts that were really necessary for our MVP so that the team could move forward and start with implementing the core features. We also did a few pair programming / debuging sessions to speed up the progress.
+We decided to refactor some of the tasks and only implemented the parts that were really necessary for our MVP so that the team could move forward and start with implementing the core features. We also did a few pair programming / debuging sessions to speed up the progress.
 
-About week into implementing the core features of our app, we realized we do not have enough time for implementing all the requirements we set out to complete, as some of them required more time than we anticipated. To be sure that we have a working concept at the end of the development cycle (29.10.2024) we had a meeting where we discussed what is necessary to have implemented for the app's usecase to be valid. Based on that discussion we again, refactored some of the tasks and decided to drop some that were less important.
+About week into implementing the core features of our app, we realized we do not have enough time for implementing all the requirements we set out to complete, as some of them required more time than we anticipated. To be sure that we have a working concept at the end of the development cycle (29.10.2024) we had a meeting where we discussed what is necessary to have implemented for the app's usecase to be valid. Based on that discussion we further refactored some of the tasks and decided to drop some that were less important.
 
 This continuous development and refactoring that we showcased helped us to end up with a relevant working product at the end that we can be happy about and is definitely something we will apply to our future projects as well.
 
@@ -21,7 +21,7 @@ The first situation was straight forward, we just check whether the `RaycastHit`
 if (Physics.Raycast(ray, out RaycastHit hitObject))
   if (hitObject.transform.CompareTag(Tag.Placable.ToString())) return;
 ```
-The second situation proved to be way more complex, we first tried to implement it using a method called `OverlapBox` (since our frames are rectangles) but after some time of not being successful we refactored the second situation into a new separate task as this is not a 'must to have' implementation for the MVP.
+The second situation proved to be way more complex, we first tried to implement it using a method called `OverlapBox` (since our frames are rectangles) but after some time of not being successful we refactored the second situation into a new separate task as this is not a 'must have' implementation for the MVP.
 
 ### Custom frame sizes
 It should be possible for the user to select a custom sized frame. To achieve this we created a canvas that will appear when the user will click to place an object onto the AR plane: 
@@ -37,7 +37,7 @@ An interesting learning from implementing this task was that we expected that we
 ### Uploading a compressed version of a photo and attaching it to premodeled frame 
 Another feature that was added to the current project is picking a picture that should be placed on the wall from the phone gallery. For that purpose was used asset [Native Gallery for Android & iOS](https://assetstore.unity.com/packages/tools/integration/native-gallery-for-android-ios-112630) that provides access to the phone gallery. 
 
-Bellow is shown `applyPicture()` method that is responsible for placing the picture that was chosen from gallery into the frame on the AR plane. In the method is created sprite from the texture that is essentially the picture chosen from the gallery. The reason for using Sprite for placing the picture into the frame instead of using for example Raw Image is that the frame is a 3D object and the RawImage component can be used only for 2D objects.
+Bellow is shown `applyPicture()` method that is responsible for placing the picture that was chosen from gallery into the frame on the AR plane. In the method is created sprite from the texture that is essentially the picture chosen from the gallery. The reason for using a sprite for placing the picture into the frame instead of using for example Raw Image is that the frame is a 3D object and the RawImage component can be used only for 2D objects.
 
 Pictures that can be uploaded to the frame can have all possible sizes and ratios. Moreover, those pictures can be placed in a huge range of frames. Because of that, the `applyPicture()` must handle all of those scenarios. For that are used sprite renderer bounds of frame object and newly created Sprite from gallery picture. Those two values are divided and the result is the scale factor. After that, transform values x and y are multiplied by that scale factor. The result is that the image is either scaled down or up, such that it fits into the frame. 
 
