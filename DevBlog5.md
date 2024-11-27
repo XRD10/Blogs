@@ -70,3 +70,86 @@ In the figure bellow can be seen asteroid field that was added to game scene. Fo
 
 <img width="700" alt="Screenshot 2024-11-24 at 18 22 13" src="https://github.com/user-attachments/assets/208d294d-47a6-4a81-a520-959d4fc85a14">
 
+### Player shooting
+One of the core parts of the game was the ability for the X-Wing to shoot. 
+Shooting is a regularly implemented feature of games, so it was straight-forward to know that it would require:
+- A laser prefab object
+- A projectile script
+- A firing controller script
+
+To start with, a laser prefab was created simply using a stretched 3D object with a collider. The projectile script added to the prefab contains simple information including speed, damage, time to live, and a way to keep the projectile heading in the correct direction. The Enemy laser prefab variant was coloured green, and the Player laser prefab variant was coloured red.
+A more interesting part was creating the firing controller, particularly in order to control the firing sequence of the X-Wing.
+{
+    [Header("----Laser Settings----")]
+    public string laserTag = "PlayerLaser";
+    public float fireRate;
+    public float laserSpeed;
+    public int damage;
+    [SerializeField]
+    GameObject laserPrefab;
+    public AudioSource laserAudioSource;
+
+    [Header("----Meta----")]
+    public bool isFiring = false;
+    private Coroutine firingCoroutine;
+
+    [Header("----Firing points----")]
+    [Tooltip("Adjust firing order here")]
+    [SerializeField]
+    Transform[] laserOrigins;
+    private int currentLaserIndex = 0;
+
+    [Header("----Target point----")]
+    [Tooltip("Set where the lasers should aim")]
+    [SerializeField]
+    Transform targetPoint;
+}
+
+The FiringController class for the player sets all the information for the shooting timing and spawnpoint for the projectiles, and passes speed, damage and target location to the newly spawned objects.
+One of the fun elements was utilising a co-routine to handle the firing, which allows setting a pause between shots and makes it easy to cycle through each of the firing locations making a circular firing pattern. This can be easily edited to make different firing patterns.
+   
+{
+     private IEnumerator FireContinuously()
+    {
+        // Calculate the interval between each laser shot
+        // Total time for one full cycle (all lasers fired once)
+        float cycleTime = laserOrigins.Length / fireRate;
+
+        // Time between individual laser shots
+        float timeBetweenShots = cycleTime / laserOrigins.Length;
+
+        while (isFiring)
+        {
+            FireSingleLaser(laserOrigins[currentLaserIndex]);
+
+            currentLaserIndex = (currentLaserIndex + 1) % laserOrigins.Length;
+
+            // Wait for the specified time before firing the next laser
+            float elapsedTime = 0f;
+            while (elapsedTime < timeBetweenShots)
+            {
+                if (!isFiring)
+                    yield break;
+
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+        }
+    }
+}}
+
+
+{
+    private void FireSingleLaser(Transform origin)
+    {
+        
+        Vector3 direction = (targetPoint.position - origin.position).normalized;
+
+        GameObject laser = Instantiate(laserPrefab, origin.position, Quaternion.LookRotation(direction));
+        laserAudioSource.Play();
+        Projectile projectile = laser.GetComponent<Projectile>();
+        projectile.speed = laserSpeed;
+        projectile.damage = damage; 
+        projectile.targetPosition = targetPoint.position;
+    }
+}
