@@ -74,10 +74,9 @@ The way this was implemented required a list of prefab game objects to be placed
      }
  }
 ´´´´
-By doing it this way, we created buttons that represented each prefab object in the list, and actively deleted them once a button had been created.
+By doing it this way, buttons are created that represent each prefab object in the list, and actively deleted them once a button had been created.
 
-In retrospect, this implementation could have been handled much better with a single frame prefab, and have the size scaled according to the same method as the custom frame which sets the XY sizes. This would have reduced the number of prefabs, and opened the application to more flexible future implementations. This could be a viable approach to selecting different frames however, rather than frame sizes.
-
+In retrospect, this implementation could have been handled much better with a single frame prefab, and have the size scaled according to the same method as the custom frame which sets the XY sizes. This would have reduced the number of prefabs, and opened the application to more flexible future implementations. The approach would likely have been a good option when selecting different types of frames however, which could be implemented in the future.
 
 
 ### Custom object size
