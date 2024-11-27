@@ -36,23 +36,15 @@ public class FramePlacer : PressInputBase
         _framePlaced = true;
     }
 }
-```
+````
 
 ### Placing the object
 Placing the object in the correct orientation was remarkably difficult to get to work correctly.
 What worked on the simulator, did not translate to the real world application. This was due to an unexpected setup of the simulator, with xyz axes mixed-up. Additionally, the wall scanning did not always spawn predictably in AR. This meant the implementation that spawned the object took a long time to get remotely correct. 
-```
+
     public void PlaceFrame()
     {
         var hitpose = _hits[0].pose;
-
-        // If the image from the gallery was not picked or if the frame sized was changed, then
-        if (galleryManager.gameObject.activeSelf)
-        {
-            galleryManager.setPictureFromGallery(null);
-        }
-
-        texture = galleryManager.getPictureFromGallery();
 
         if (texture)
         {
@@ -62,17 +54,13 @@ What worked on the simulator, did not translate to the real world application. T
             instance.transform.localScale = new Vector3(objectToPlace.transform.localScale.x, objectToPlace.transform.localScale.y / 10, objectToPlace.transform.localScale.z);
             instance.transform.up = hitpose.up;
             instance.transform.Rotate(0, yRotation, 0, Space.Self);
-            instance.tag = "Placable";
-            SetText(instance, instance.transform.localScale.z, instance.transform.localScale.x);
-            applyPicture();
-        }
-        else
-        {
-            Debug.Log("Choose image from gallery");
         }
 
     }
-´´´
+
+This method utilises the touch of the user to spawn an instance of a frame prefab on the scanned wall plane that 
+
+While this functions, it is not ideally implemented: The placing of the objects could be better aligned with the scanned plane, and the rotation is potentially not necessary as the landscape object prefab is already rotated 90degrees from the portrait object prefab. Additionally, this code is duplicated in the PlaceCustomFrame() method. These two methods could be combined, as they produce the same effect. One reason for the two similar implementations happening was teething issues in becoming more familiar working on a Unity project as a group, however it could be a good option to tidy-up the code.
 
 ### Predefined object size
 With a bit of research, we found the most common sizes of frames and implemented prefab objects of these sizes (cm):
