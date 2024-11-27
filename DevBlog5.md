@@ -150,10 +150,87 @@ One of the fun elements was utilising a co-routine to handle the firing, which a
 
 Once the input action to fire is triggered, the isFiring boolean is set to True and the Co-routine FireContinuously is called. While 'isFiring' is active, the loop calls the FireSingleLaser() method and cycles through the array of firepoints. Additionally, the while-loop introduces a slight delay before firing the next laser from the next firing location. This simple co-routine allows for controlling a more exciting and fun firing pattern that is very responsive and more immersive.
 
+There is a 'targetPoint', which is in practice a gameobject set 250units ahead of the Player in order to have the 4 lasers (which are parallel) converge on a single location. This targetPoint is skinned as a targeting reticle.
+
 However being able to shoot is not useful if you don't have a target, therefore it was necessary to also implement...
 
-### Enemy Spawning
+### Enemy movement and shooting
 
+For the enemies, there were 3 particular areas of note:
+- Movement
+- Shooting
+- Spawning
+
+The enemy TIE fighter prefab was given a collider and a rigid body, and an enemy movement script.
+The enemies would behave in different ways, given the size of the game, so it was decided to implement a finite state machine to handle enemy behaviour. The states of the enemy were defined as RandomFlight(default), ChasePlayer, AvoidPlayer, and Returning.
+Randomflight was the default state of the enemy, intended to fly and change direction every 30 seconds. One issue found early on was emulating smooth turning, so that the turns were not abrupt and the enemy would always be moving in the direction it was facing.
+This was handled by the simple following 2 scripts:
+
+````
+    private void MoveForward()
+    {
+        rb.linearVelocity = transform.forward * currentSpeed;
+    }
+
+    private void RotateTowardsTarget()
+    {
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+    }
+````
+Every time the enemy changes direction, these methods are called which allows for smooth and realistic movement.
+
+The state changes were handled within each of the 'Handle...' methods which are called during update depending on the current state.
+````
+ private void Update()
+    {
+        switch (currentState)
+        {
+            case State.RandomFlight:
+                HandleRandomFlight();
+                break;
+            case State.ChasePlayer:
+                HandleChasePlayer();
+                break;
+            case State.Returning:
+                HandleReturning();
+                break;
+            case State.EvadePlayer:
+                HandleEvadePlayer();
+                break;
+        }
+    }
+````
+When in RandomFlight, the enemy is checking for its distance from spawn point which, if it exceeds a given distance, it will change state to Returning where it returns to the spawn location. The enemy is also checking for the player object. If the player is within the location radius, the state will change to ChasePlayer. The enemy will now turn to face the player and move toward their position.
+One addition to this, is that enemies will fly into the player and constantly attempt to be as close to the player location as possible. This is neither realistic nor fun for gameplay, so while in the ChasePlayer state, the enemy checks its distance from the player and, when inside the evade radius, the state will change again to EvadePlayer. Evade player chooses a random direction and continues in that direction for a certain distance which mimics a 'fly-by' behavior, allowing a more realistic interaction.
+
+Implementing this finite state machine gives fun and challenging behaviours to the enemies, making them react to the world around them. Additionally, it can be expanded into other behaviours and have other actions included inside it, as when implementing shooting.
+
+The EnemyFireController class is only called while in the ChasePlayer state. It closely resemembles the FireController script for the player, but also includes a built in inaccuracy class to make the enemies less accurate. 
+
+````
+   private Vector3 CalculateInaccuracy()
+    {
+
+        // Get direction to player
+        Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
+
+        // Apply inaccuracy
+        float inaccuracyAngle = inaccuracy;
+        directionToPlayer = Quaternion.Euler(
+            Random.Range(-inaccuracyAngle, inaccuracyAngle),
+            Random.Range(-inaccuracyAngle, inaccuracyAngle),
+            Random.Range(-inaccuracyAngle, inaccuracyAngle)
+        ) * directionToPlayer;
+
+        // Calculate target position far along the inaccurate direction
+        float targetDistance = 1000f; // Arbitrary large distance
+        Vector3 targetPosition = transform.position + directionToPlayer * targetDistance;
+
+        return targetPosition;
+    }
+````
+This is a simple script using the location of the player and introducing a random inaccuracy and applying that to the target location that they are aiming at.
+Now it is possible for the player to chase enemies, shoot at enemies, and have enemies move around the environment and engage the player, as well as shooting at the player.
 
 
 
