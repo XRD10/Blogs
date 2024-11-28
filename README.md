@@ -19,7 +19,7 @@ _YoutTube Demo: [Photo Wall Planner Demo](https://youtu.be/E9mOAo1mXzE)_
   
 ## VR project
 _GitHub Repository: [X-Wing VR](https://github.com/XRD10/x-wing-vr)_<br/>
-_YoutTube Demo: [X-Wing VR Demo]()_
+_YoutTube Demo: [X-Wing VR Demo](https://youtu.be/js29IL71DP4)_
 
 - [Blog5](DevBlog4.md)
 - [Blog6](DevBlog5.md)
