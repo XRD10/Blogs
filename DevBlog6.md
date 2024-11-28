@@ -67,3 +67,55 @@ For speed displaying, another controller was created called `SpeedDisplayControl
 <img width="525" alt="Screenshot 2024-11-25 at 12 37 49 pm" src="https://github.com/user-attachments/assets/e2e978d1-a8b8-4d96-956f-e5f37b5818b4">
 
 There is still a lot of things that could be added to cockpit. We could add real blinking lights instead of textures, make more buttons or sticks interactable (for example Battle mode button) or shield health bar. We enjoyed working on this project very much and would have welcomed additional time to implement more features. However, due to time constraints, these additional features had to be left for future development.
+
+### Enemy spawn and health
+The enemies need to be able to be spawned, which is an excellent option to utilise object pooling.
+There are two elements that need to be implemented:
+- Enemy Spawner
+- Enemy Pool
+
+The EnemySpawner handles the spawning of the enemy objects in the environment. It uses a co-routine to begin spawining and running through the pool of enemies with a delay, giving time for enemies to be separated. Once it runs out enemies in the pool, it will stop the co-routine. Introducing the ResumeSpawning() method restarts the spawn from the pool. By setting the update method to check if the number of enemies in the pool is greater than 5, and calling the ResumeSpawning() method when true, it allows for an endless loop of enemies!
+
+For this to work, the Enemy Pool also needs to exist. It is a simple script that enqueues a given number of enemies into queue object and exposes a GetEnemy() method and ReturnEnemy() method to dequeue and enqueue enemy objects respectively.
+
+````
+    public GameObject GetEnemy()
+    {
+        if (enemyPool.Count > 0)
+        {
+            GameObject enemy = enemyPool.Dequeue();
+            EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.OnEnemyDeath += ReturnEnemy;
+            }
+            enemy.SetActive(true);
+            return enemy;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public void ReturnEnemy(GameObject enemy)
+    {
+        EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+        enemyHealth.Reset();
+        enemyHealth.OnEnemyDeath -= ReturnEnemy;
+        enemy.SetActive(false);
+        enemyPool.Enqueue(enemy);
+    }
+````
+
+ In the above methods, it is clear an EnemyHealth script is needed, which will be covered below. However, it is important to highlight the subscription and desubscription of the Enemy objects to an Action called "OnEnemyDeath" – where the action is invoked at some point in EnemyHealth and the ReturnEnemy method is called.
+
+````
+    public void Die()
+    {
+        Debug.Log("Boom");
+        Instantiate(explosionPrefab, transform.position, transform.rotation);
+        OnEnemyDeath?.Invoke(gameObject);
+    }
+````
+Inside the EnemyHealth script, the Die() method is the logical place for this to be invoked, making a responsive return of the enemies into the waiting enemy pool. This handles all death whether it is from the player, from a collision, or some future implementation. 
