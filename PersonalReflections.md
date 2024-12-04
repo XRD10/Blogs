@@ -23,6 +23,28 @@ As mentioned above, it would be great to have some more time for developing this
 ## David 
 
 ## Anton
+Main contributions
+
+-	Gallery saving, working area (AR)
+-	3D objects, sound (VR)
+
+General reflections
+
+I chose this course, because I wanted to get an introduction to VR or AR, since I found these technologies interesting and I believe there is a great potential for them in the future. And this course delivered exactly what I expected. Even though there weren't a lot of lessons with the teacher, I think it would serve as a great base for someone who would like to work with extended reality in the future. Since we only had 5 lessons (besides lab), we could spend the time on the projects, as that was the main point of this course. For me, this worked well, since I am the kind of person who needs to try and play with the project. From lessons, we did not get only implementation information, but also information about the devices, potential project ideas, advantages, and risks of the industry as well as where the industry is heading. I also liked that I was allowed to create a game for a VR project since learning should be also about fun, and creating a VR game definitely fulfills that.
+When it comes to the projects and group work, I have to say I had an amazing group. Everyone collaborated and communicated and we all wanted to learn and develop great applications (or games). Working with Unity was a smooth process. Even though I did not take a Game Development course last semester, I did not feel lost. I created my own game before the semester started and it was very helpful, as I had an introduction to Unity before we started working on the projects. Throughout the course, I gained a solid understanding of the AR foundation and XR Interaction toolkit, what they can do, and how to use them.
+
+AR
+
+AR project turned out to be a real challenge. The idea of a photo wall planner was interesting, however because of our inexperience with AR projects, it took us longer to build than expected.
+When I was working on the Working Area feature, I worked with ARPlaneManager for surface detection and ARRaycastManager for placement of the Quad that would serve as the working area. Unfortunately, there was not enough time to make the working area work properly, and so it lives in its own branch.  There was a problem with the rotation of the walls detected at different angles and it would cause incorrect calculations of image-to-border distances, as they were often inverted. If there was more time, we could definitely fix that. One more thing I would have liked to implement is occlusion, which would have significantly enhanced the immersive experience by allowing virtual objects to be properly obscured by real-world furniture and wall decorations.
+
+VR
+
+We were deciding between 2 project ideas. X-wing simulator and Iron Man simulator. We decided to go with Star Wars and I believe we created the fun game. With the ability to fly around, fight with Tie-fighters, see space with the Imperial Star Destroyer, and have the ability to grab controllers, our game achieves a high level of immersion for the player. A significant portion of the project involved working with 3D models. The process of creating, segmenting, performing LOD reduction, and texturing these models was time-consuming and complex, especially for newcomers to 3D modeling. I found the workshop about Blender very helpful and I think I used every one of the methods that were demonstrated by the teacher.
+Even though, before the projects, VR seemed to me to be more challenging than AR, my perspective has shifted. Since we were creating a game and I had 3 group members on the team who had previous experience with game development, I could learn from them and use their guide. During the initial phase, we used advice from the teacher, to look at it as a normal 3D game. And it was, the main difference was using XRGrabInteractable from XR Interaction, which enabled physical interaction with ship controls, enhancing immersion. 
+However, there was one part that was in particular challenging. Testing and building the game to the VR headset. First, I tried to build it on a MacBook, following some tutorials, but it did not work. However, I have seen someone from our class do it, so in the future, it could make sense to try it again, so it would be possible to test it directly from my computer. We ended up using a computer in the Lab and testing it this way.
+
+To sum up, it was a great experience, I learned new technical skills, gained some insights into the XR industry, and created 2 interesting projects along the way.
 
 ## James
 
