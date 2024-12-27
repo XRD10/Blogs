@@ -21,6 +21,23 @@ The only bigger issue was when it came to implementing the grabable joystick and
 As mentioned above, it would be great to have some more time for developing this project as it was way more fun than the AR one (but this feeling could well be due to the topics we chose for the individual projects).
 
 ## David 
+### Main contributions
+- Uploading photos to frames and frame movement (AR)
+- Meteorites and Menu UI (VR)
+
+### General reflections
+I chose this course because I attended the XR Expo multiple times in previous semesters and I have become curious about how XR technology works. During this semester we developed a projects for AR and VR. I like that the course was divided into two projects because the previous semester I had Game Development, where we developed only one project which took so much time and effort. I felt that having two projects instead of one is better since the work was evenly distributed and we didn’t spend too much time on one project, because we had to keep some time for the next project. 
+
+### AR Project
+PhotoWallPlanner application initially seemed very simple because the mechanics that we were supposed to use were very similar to those that we used in exercises during lessons. For testing, an AR experience was used most often as a simulator in Unity since it was faster for testing than building it each time on an Android device. However, this approach to testing turned out to be problematic because it was quite easy to develop mechanics, such as placing frames and moving frames, so they worked on a simulator. However, after building and testing it on the Android device, we realized that there is an issue that it is very difficult to scan a wall, but most importantly, the frames that are placed on the wall are rotated. Frames were rotated based on which wall was scanned, whether it was front, back, left, or right plane. Because of this, we had to do so many ‘workarounds’ in our development. 
+
+Since I was the person who was developing the functionality for uploading and placing images into frame. I had to rotate the image such as it fits the frame, and scale it based on the dimensions. I believe that the solution to properly fix this issue in the future would be to develop this AR experience for iPhone instead of Android, which might have better plane scanning and hopefully would not distinguish between wall positions and would rotate all frames the same.
+
+### VR Project
+Flight simulator is the project of which I am the proudest. I think that developing a VR project was way easier than AR because the project was developed for the Unity environment, therefore there were not any unexpected ‘real world’ problems such it was in the case of the AR project. I think that the most important thing was to implement, a joystick mechanism that controls X-Wing movement. We tried to develop this feature as simply as possible and therefore we used the X-Wing model from the internet, and we separated the joystick by using a Blender. After that, it was just about adding extra features to the game. From the parts of the development that I implemented, the most challenging was for me Pause Menu UI. Initially, I was thinking about all possible options, such as if the game should be paused during the gameplay or not. But eventually, I noticed that in other VR games, the Pause Menu UI is usually integrated directly into the game environment. For that reason, I implemented it such that it is shown as display in the cockpit. Thanks to this I have learned how to develop elements in VR experience that follow the same patterns as other VR games and are simple to use. 
+
+Overall, the XR course was an amazing experience that helped me to dive deep into the world of VR and AR. Thanks to great organization and planning, I learned how to divide the Unity project into sub-issues and then work on them while collaborating with others. It was amazing to create one project, which is an AR app that solves real-world problem, and another project, which is a VR game that is fun to play. I was proud of myself and my team when we, at the end of the semester, presented our projects at the XR Expo, and we saw that others were excited about it.
+
 
 ## Anton
 Main contributions
